@@ -10,6 +10,7 @@ def test_init_project_default_creates_expected_files():
         assert (root / "README.md").exists()
         assert (root / "AGENTS.md").exists()
         assert (root / "SECURITY.md").exists()
+        assert (root / "CONTRIBUTING.md").exists()
         assert (root / "CHANGELOG.md").exists()
         assert (root / ".github" / "workflows" / "ci.yml").exists()
         assert (root / ".gitleaks.toml").exists()
@@ -58,3 +59,11 @@ def test_init_project_rejects_bad_name():
             pass
         else:
             raise AssertionError("Expected ValueError for invalid project name")
+
+
+def test_contributing_template_contains_quality_checks():
+    with tempfile.TemporaryDirectory() as tmp:
+        root = init_project("demo", Path(tmp), "Demo project")
+        text = (root / "CONTRIBUTING.md").read_text(encoding="utf-8")
+        assert "pytest -q" in text
+        assert "gitleaks git --redact" in text

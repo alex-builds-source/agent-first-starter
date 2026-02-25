@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.4] - 2026-02-25
+### Added
+- Scaffold now includes `CONTRIBUTING.md` by default with contribution/release hygiene guidance.
+- Added test coverage to verify CONTRIBUTING quality-check content.
+
+### Changed
+- README scaffold template now points contributors to `CONTRIBUTING.md`.
+
 ## [0.1.3] - 2026-02-25
 ### Added
 - Preset support: `cli-only`, `api-only`, `cli-api`.

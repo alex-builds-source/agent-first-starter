@@ -44,6 +44,7 @@ Always:
 - `README.md`
 - `AGENTS.md`
 - `SECURITY.md`
+- `CONTRIBUTING.md`
 - `CHANGELOG.md`
 - `.env.example`
 - `.gitignore`

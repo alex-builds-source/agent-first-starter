@@ -36,6 +36,7 @@ README_TEMPLATE = """# {name}
 
 - Keep docs updated for humans and agents.
 - Keep interfaces stable and explicit.
+- See `CONTRIBUTING.md` for contribution and release hygiene.
 """
 
 AGENTS_TEMPLATE = """# AGENTS.md
@@ -84,6 +85,27 @@ This repository is public unless explicitly configured otherwise.
 
 ## Reporting
 Document your preferred private disclosure channel here.
+"""
+
+CONTRIBUTING_TEMPLATE = """# Contributing
+
+Thanks for contributing.
+
+## Before opening a PR
+- Keep docs in sync with behavior changes.
+- Add or update tests for non-trivial changes.
+- Run secret scan checks before pushing.
+
+## Quality checklist
+- `pytest -q`
+- `gitleaks git --redact`
+- update `CHANGELOG.md` when user-visible behavior changes
+
+## Commit style (recommended)
+- `feat:` user-visible additions
+- `fix:` bug fixes
+- `docs:` documentation-only updates
+- `chore:` maintenance and release operations
 """
 
 CHANGELOG_TEMPLATE = """# Changelog
@@ -317,6 +339,7 @@ def init_project(
     )
     _write_file(root / "AGENTS.md", AGENTS_TEMPLATE)
     _write_file(root / "SECURITY.md", SECURITY_TEMPLATE)
+    _write_file(root / "CONTRIBUTING.md", CONTRIBUTING_TEMPLATE)
     _write_file(root / "CHANGELOG.md", CHANGELOG_TEMPLATE)
     _write_file(root / ".github" / "workflows" / "ci.yml", CI_TEMPLATE)
     _write_file(root / ".gitleaks.toml", GITLEAKS_TEMPLATE)

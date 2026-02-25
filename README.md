@@ -7,12 +7,12 @@ Scaffold tiny, useful software projects with **agent-first defaults** that still
 When building with AI agents, most friction comes from missing structure and ambiguous docs.
 This tool creates a clean starter layout with:
 
-- CLI-friendly project skeleton
-- API/docs placeholders
+- preset-based interface scaffolds (`cli-only`, `api-only`, `cli-api`)
+- docs and source skeletons aligned to the chosen preset
 - `AGENTS.md` guidance for agents
 - sane `.gitignore` and `.env.example`
 - security-focused baseline files
-- CI + secret scan template for public repos
+- optional pre-commit and release workflow scaffolds
 
 ## Install (dev)
 
@@ -28,19 +28,21 @@ Basic:
 agent-starter init my-tool
 ```
 
-Common options:
+Preset and optional automation examples:
 
 ```bash
-agent-starter init my-tool --description "Tiny utility for X"
-agent-starter init my-tool --target ./projects
+agent-starter init my-cli --preset cli-only
+agent-starter init my-api --preset api-only
+agent-starter init my-full --preset cli-api --with-precommit --with-release-workflow
+agent-starter init my-tool --description "Tiny utility for X" --target ./projects
 agent-starter --help
 ```
 
 ## What it scaffolds
 
+Always:
 - `README.md`
 - `AGENTS.md`
-- `docs/API.md`
 - `SECURITY.md`
 - `CHANGELOG.md`
 - `.env.example`
@@ -48,6 +50,22 @@ agent-starter --help
 - `.gitleaks.toml`
 - `.github/workflows/ci.yml`
 - `tests/test_smoke.py`
+- `pyproject.toml`
+- `src/<package>/__init__.py`
+
+By preset:
+- `cli-only`:
+  - `docs/CLI.md`
+  - `src/<package>/cli.py`
+- `api-only`:
+  - `docs/API.md`
+  - `src/<package>/api.py`
+- `cli-api`:
+  - both CLI and API docs/source files
+
+Optional flags:
+- `--with-precommit` → `.pre-commit-config.yaml`
+- `--with-release-workflow` → `.github/workflows/release.yml`
 
 ## Security stance
 

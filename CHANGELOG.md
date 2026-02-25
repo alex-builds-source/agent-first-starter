@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3] - 2026-02-25
+### Added
+- Preset support: `cli-only`, `api-only`, `cli-api`.
+- Optional scaffolds:
+  - `.pre-commit-config.yaml` via `--with-precommit`
+  - `.github/workflows/release.yml` via `--with-release-workflow`
+- Basic source skeleton generation in `src/<package>/` aligned to chosen preset.
+- Default generated `pyproject.toml` in scaffolded projects.
+
+### Changed
+- README updated with preset/automation usage patterns.
+- Expanded test coverage for preset-specific outputs.
+
 ## [0.1.2] - 2026-02-25
 ### Added
 - Scaffold now includes `SECURITY.md`, `CHANGELOG.md`, `.gitleaks.toml`, CI workflow, and `tests/test_smoke.py`.
